@@ -14,6 +14,23 @@ from bs4 import BeautifulSoup
 
 import sys
 
+#获取网页内容
+def OpenPage(url):
+    MyHeaders = {}
+    #urllib2.Request 填写两个参数，第一个参数是url，第二个参数是我们的请求头headers
+    request = urllib2.Request(url, headers = MyHeaders)
+    #类文件对象
+    #urlopen发送指定请求
+    f = urllib2.urlopen(request)
+    #f.read()读取响应对象的内容
+    data = f.read()
+    #编码解码方法 decode解码 encode编码
+    #ignore replace
+    return data.decode("GBK", errors="ignore").encode("utf-8")
+#测试访问页面内容
+def Test1():
+    print OpenPage("http://www.shengxu6.com/book/2967.html")
+
 if __name__ == "__main__":
     #构建完整的爬虫应用
     #小说主页
