@@ -31,6 +31,9 @@ def OpenPage(url):
 def Test1():
     print OpenPage("http://www.shengxu6.com/book/2967.html")
 
+def ParseMainPage(main_page):
+    
+
 if __name__ == "__main__":
     #构建完整的爬虫应用
     #小说主页
