@@ -66,6 +66,15 @@ def Test3():
     print title
     print content[:-12]
 
+#把获取到的内容写入文件中
+def WriteDataToFile(file_path, data):
+    f = open(file_path, "a+")
+    f.write(data)
+    f.close()
+    #with open(file_path, "a+") as f:
+    #   f.write(data)
+
+
 if __name__ == "__main__":
     #构建完整的爬虫应用
     #小说主页
