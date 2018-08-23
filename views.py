@@ -51,6 +51,15 @@ def Test2():
     page = OpenPage("http://www.shengxu6.com/book/2967.html")
     print ParseMainPage(page)
 
+#解析详情页内容，获取小说正文
+def ParseDetailPage(page):
+    #BeautifulSoup 解析响应内容
+    soup = BeautifulSoup(page, "html.parser")
+    
+    title = soup.find_all(class_="panel-heading")[0].get_text()
+    content = soup.find_all(class_="content-body")[0].get_text()
+    return title,content
+
 if __name__ == "__main__":
     #构建完整的爬虫应用
     #小说主页
