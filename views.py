@@ -60,6 +60,12 @@ def ParseDetailPage(page):
     content = soup.find_all(class_="content-body")[0].get_text()
     return title,content
 
+def Test3():
+    page = OpenPage("http://www.shengxu6.com/book/2967.html")
+    title,content = ParseDetailPage(page)
+    print title
+    print content[:-12]
+
 if __name__ == "__main__":
     #构建完整的爬虫应用
     #小说主页
