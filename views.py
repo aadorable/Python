@@ -47,6 +47,9 @@ def ParseMainPage(page):
         url_list.append("http://www.shengxu6.com" + item['href'])
     return url_list
 
+def Test2():
+    page = OpenPage("http://www.shengxu6.com/book/2967.html")
+    print ParseMainPage(page)
 
 if __name__ == "__main__":
     #构建完整的爬虫应用
