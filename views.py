@@ -31,8 +31,22 @@ def OpenPage(url):
 def Test1():
     print OpenPage("http://www.shengxu6.com/book/2967.html")
 
-def ParseMainPage(main_page):
-    
+def ParseMainPage(page):
+    #调用BeautifulSoup库解析页面
+    soup = BeautifulSoup(page, "html.parser")
+    #find_all方法查询所有的指定内容
+    #包含read字符串的href链接 通过正则表达式
+    list_charts = soup.find_all(href=re.compile("read"))
+    #url_list = ["http://www.shengxu6.com" + item['href'] for item in list_charts]
+    url_list = []
+    for item in list_charts:
+        #print type(item)
+        #每一个item是一个tag标签类的实例化对象
+        #通过item['href'] 可以获取到href的值
+        #print item["href"]
+        url_list.append("http://www.shengxu6.com" + item['href'])
+    return url_list
+
 
 if __name__ == "__main__":
     #构建完整的爬虫应用
