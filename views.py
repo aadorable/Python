@@ -74,6 +74,9 @@ def WriteDataToFile(file_path, data):
     #with open(file_path, "a+") as f:
     #   f.write(data)
 
+def Test4():
+    WriteDataToFile("tmp.txt", "adsadfdgaafgadv\n")
+    WriteDataToFile("tmp.txt", "fdviyhvyufieavb\n")
 
 if __name__ == "__main__":
     #构建完整的爬虫应用
