@@ -7,8 +7,10 @@
 
 #Python库，提供一系列针对url的操作方法
 import urllib2
+
 #Re正则表达式库，提供一系列针对正则表达式的方法
 import re
+
 #BeautifulSoup库
 from bs4 import BeautifulSoup
 
@@ -25,7 +27,6 @@ def OpenPage(url):
     #f.read()读取响应对象的内容
     data = f.read()
     #编码解码方法 decode解码 encode编码
-    #ignore replace
     return data.decode("GBK", errors="ignore").encode("utf-8")
 #测试访问页面内容
 def Test1():
