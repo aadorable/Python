@@ -9,6 +9,13 @@ from bs4 import BeautifulSoup
 #yum install python-devel
 #pip install mysql-python
 
+def OpenPage(url):
+    Myheaders = {}
+    req = urllib2.Request(url,headers=Myheaders)
+    f = urllib2.urlopen(req)
+    data = f.read()
+    return data
+
 #mysql -u root -p < table.sql
 if __name__ == "__main__":
     url = "http://jy.51uns.com:8022/Frame/Data/jdp.ashx?rnd=1533001139862&fn=GetZhaopinList&StartDate=2000-01-01&SearchKey=&InfoType=-1&CompanyAttr=&CompanyType=&Area=&City=&CompanyProvice=&Post=&Zhuanye=&XLkey=&Age=&start=0&limit=15&DateType=999&InfoState=1&WorkType=0&CompanyKey="
