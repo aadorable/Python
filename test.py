@@ -60,6 +60,14 @@ def ParseDetailPage(page):
 
     return data["Id"],data["CompanyTitle"],data["WorkPositon"],content
 
+def Test4():
+    page = OpenPage("http://jy.51uns.com:8022/Frame/Data/jdp.ashx?rnd=1533005501840&fn=GetOneZhaopin&JobId=b360f9f177e34d94ba1363615aabda5f&StartDate=2000-01-01")
+    jobid,title,position,content = ParseDetailPage(page)
+    print jobid
+    print title
+    print position
+    print content
+
 #mysql -u root -p < table.sql
 if __name__ == "__main__":
     url = "http://jy.51uns.com:8022/Frame/Data/jdp.ashx?rnd=1533001139862&fn=GetZhaopinList&StartDate=2000-01-01&SearchKey=&InfoType=-1&CompanyAttr=&CompanyType=&Area=&City=&CompanyProvice=&Post=&Zhuanye=&XLkey=&Age=&start=0&limit=15&DateType=999&InfoState=1&WorkType=0&CompanyKey="
