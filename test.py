@@ -43,6 +43,23 @@ def Test3():
  
     print ParseMainPage(page)
 
+#解析招聘信息详情页
+def ParseDetailPage(page):
+    data = json.loads(page)
+    if not data["Succeed"]:
+        print "error"
+        return
+    data = data["Data"]
+    detail = data["EmployContent"]
+    soup = BeautifulSoup(detail,"html.parser")
+    #查找全部的p标签
+    GetP = soup.find_all("p") 
+    #get_text()
+    content = [item.get_text() for item in GetP]
+    content = "\n".join(content)
+
+    return data["Id"],data["CompanyTitle"],data["WorkPositon"],content
+
 #mysql -u root -p < table.sql
 if __name__ == "__main__":
     url = "http://jy.51uns.com:8022/Frame/Data/jdp.ashx?rnd=1533001139862&fn=GetZhaopinList&StartDate=2000-01-01&SearchKey=&InfoType=-1&CompanyAttr=&CompanyType=&Area=&City=&CompanyProvice=&Post=&Zhuanye=&XLkey=&Age=&start=0&limit=15&DateType=999&InfoState=1&WorkType=0&CompanyKey="
