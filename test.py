@@ -83,6 +83,27 @@ def WriteDataToFile(data):
 #     "content" text,
 #) ENGINE = InnoDB DEFAULT CHARSET = utf8
 
+def WriteDataToMySQL(data):
+    db = MySQLdb.connect(host="localhost",user="root",password="123",db="TestPy",chartset="utf8")
+    cursor = db.cursor()
+    #base64 base64编码保障咱们能够把中文+特殊符号的内容存进数据库
+    content = data[3]
+    #进行base64编码,解决content里包含特殊符号的问题
+    content = base64.b64encode(content)
+    #构建sql语句
+    sql = "insert into ClawerSchool values('%s','%s','%s','%s')" % (data[0],data[1],data[2],data[3])
+    print "sql=" + sql
+    try:
+        #执行sql语句
+        cursor.execute(sql)
+        db.commit()
+    except Exception,e:
+        #插入失败时，为了保证数据库操作的原子性，需要进行回滚
+        db.rollback()
+        print e
+    #数据库链接关闭
+    db.close()
+
 #mysql -u root -p < table.sql
 if __name__ == "__main__":
     url = "http://jy.51uns.com:8022/Frame/Data/jdp.ashx?rnd=1533001139862&fn=GetZhaopinList&StartDate=2000-01-01&SearchKey=&InfoType=-1&CompanyAttr=&CompanyType=&Area=&City=&CompanyProvice=&Post=&Zhuanye=&XLkey=&Age=&start=0&limit=15&DateType=999&InfoState=1&WorkType=0&CompanyKey="
