@@ -68,6 +68,21 @@ def Test4():
     print position
     print content
 
+#把数据写到文件里面
+def WriteDataToFile(data):
+    f = open("output.txt","a+")
+    
+    f.write(data.encode("utf-8"))
+    f.close()
+
+#TestPy database
+#create table 'CrawlerSchool'(
+#    'id' text,
+#    'company' text,
+#    'workposition' text,
+#     "content" text,
+#) ENGINE = InnoDB DEFAULT CHARSET = utf8
+
 #mysql -u root -p < table.sql
 if __name__ == "__main__":
     url = "http://jy.51uns.com:8022/Frame/Data/jdp.ashx?rnd=1533001139862&fn=GetZhaopinList&StartDate=2000-01-01&SearchKey=&InfoType=-1&CompanyAttr=&CompanyType=&Area=&City=&CompanyProvice=&Post=&Zhuanye=&XLkey=&Age=&start=0&limit=15&DateType=999&InfoState=1&WorkType=0&CompanyKey="
