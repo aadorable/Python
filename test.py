@@ -75,7 +75,7 @@ def WriteDataToFile(data):
     f.write(data.encode("utf-8"))
     f.close()
 
-#TestPy database
+#Test database
 #create table 'CrawlerSchool'(
 #    'id' text,
 #    'company' text,
